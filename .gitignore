@@ -3,3 +3,8 @@
 cabal.sandbox.config
 dist/
 
+# Sqlite3 databases
+*.sqlite3
+
+# Yesod session files
+*.aes
