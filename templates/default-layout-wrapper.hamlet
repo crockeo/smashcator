@@ -1,0 +1,11 @@
+$doctype 5
+
+<html>
+  <head>
+    <title>#{pageTitle pc}
+
+    ^{pageHead pc}
+
+  <body>
+    <div .container>
+      ^{pageBody pc}
