@@ -7,5 +7,11 @@ $doctype 5
     ^{pageHead pc}
 
   <body>
+    <nav .navbar .navbar-default role="navigation">
+      <div .col-md-10 .col-md-offset-1>
+        <div .navbar-header>
+          <h1>
+            <a .navbar-branc href="@{HomeR}">Smashcator
+
     <div .container>
       ^{pageBody pc}
