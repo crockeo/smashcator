@@ -1,0 +1,9 @@
+/                HomeR          GET
+/information     InformationR   GET
+/contact         ContactR       GET
+/tournaments     TournamentsR   GET
+/login           LoginR         GET POST
+/tournament/#Int TournamentR    GET
+/tournament      NewTournamentR     POST
+/user/#String    UserR          GET
+/user            NewUserR           POST

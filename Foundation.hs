@@ -2,7 +2,7 @@ module Foundation where
 
 --------------------
 -- Global Imports --
-import Text.Hamlet
+import Text.Hamlet (hamletFile)
 
 import Yesod
 
@@ -14,9 +14,7 @@ import WidgetFile
 -- Code --
 data App = App
 
-mkYesodData "App" [parseRoutes|
-/ HomeR GET
-|]
+mkYesodData "App" ($(parseRoutesFile "Routes/routes"))
 
 instance Yesod App where
   defaultLayout widget = do
