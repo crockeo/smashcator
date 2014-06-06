@@ -6,4 +6,5 @@ import Foundation
 import WidgetFile
 
 getContactR :: Handler Html
-getContactR = undefined
+getContactR =
+  defaultLayout ($(widgetFile "contact"))

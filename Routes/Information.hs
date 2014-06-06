@@ -6,4 +6,5 @@ import Foundation
 import WidgetFile
 
 getInformationR :: Handler Html
-getInformationR = undefined
+getInformationR =
+  defaultLayout ($(widgetFile "information"))
