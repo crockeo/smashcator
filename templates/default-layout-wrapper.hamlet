@@ -9,8 +9,21 @@ $doctype 5
   <body>
     <div .row .toprow>
       <div .col-md-10 .col-md-offset-1>
-        <h1 .text-center .col-md-4>
-          <a href="@{HomeR}">Smashcator
+        <div .dropdown>
+          <h1 .text-center .col-md-4>
+            <a data-toggle="dropdown" href="#">
+              Smashcator
+              <b .caret>
+
+            <ul .homedropdown .dropdown-menu role="menu">
+              <li role="presentation">
+                <a role="menuitem" href="@{HomeR}">Home
+              <li role="presentation">
+                <a role="menuitem" href="@{InformationR}">Information
+              <li role="presentation">
+                <a role="menuitem" href="@{ContactR}">Contact
+              <li role="presentation">
+                <a role="menuitem" href="http://github.com/Crockeo/smashcator">GitHub
 
         <h1 .text-center .col-md-4>
           <a href="@{TournamentsR}">Tournaments
