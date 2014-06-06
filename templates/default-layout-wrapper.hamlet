@@ -7,11 +7,15 @@ $doctype 5
     ^{pageHead pc}
 
   <body>
-    <nav .navbar .navbar-default role="navigation">
-      <div .col-md-10 .col-md-offset-1>
-        <div .navbar-header>
-          <h1>
-            <a .navbar-branc href="@{HomeR}">Smashcator
+    <div .row .toprow>
+      <h1 #rowcontent .text-center .col-md-4>
+        <a href="@{HomeR}">Smashcator
+
+      <h1 #rowcontent .text-center .col-md-4>
+        <a href="@{TournamentsR}">Tournaments
+
+      <h1 #rowcontent .text-center .col-md-4>
+        <a href="@{LoginR}">Login/Register
 
     <div .container>
       ^{pageBody pc}
