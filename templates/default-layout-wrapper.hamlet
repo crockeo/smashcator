@@ -8,14 +8,15 @@ $doctype 5
 
   <body>
     <div .row .toprow>
-      <h1 #rowcontent .text-center .col-md-4>
-        <a href="@{HomeR}">Smashcator
+      <div .col-md-10 .col-md-offset-1>
+        <h1 .text-center .col-md-4>
+          <a href="@{HomeR}">Smashcator
 
-      <h1 #rowcontent .text-center .col-md-4>
-        <a href="@{TournamentsR}">Tournaments
+        <h1 .text-center .col-md-4>
+          <a href="@{TournamentsR}">Tournaments
 
-      <h1 #rowcontent .text-center .col-md-4>
-        <a href="@{LoginR}">Login/Register
+        <h1 .text-center .col-md-4>
+          <a href="@{LoginR}">Login/Register
 
     <div .container>
       ^{pageBody pc}

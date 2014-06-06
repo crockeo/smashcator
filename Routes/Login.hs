@@ -6,7 +6,11 @@ import Foundation
 import WidgetFile
 
 getLoginR :: Handler Html
-getLoginR = undefined
+getLoginR =
+  defaultLayout ($(widgetFile "login"))
 
 postLoginR :: Handler Html
 postLoginR = undefined
+
+postRegisterR :: Handler Html
+postRegisterR = undefined

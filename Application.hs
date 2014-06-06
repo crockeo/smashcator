@@ -14,9 +14,7 @@ import Routes.Contact
 import Routes.Tournaments
 import Routes.Login
 import Routes.Tournament
-import Routes.NewTournament
 import Routes.User
-import Routes.NewUser
 
 ----------
 -- Code --
