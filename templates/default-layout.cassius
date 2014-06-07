@@ -21,6 +21,10 @@ a:hover.toprowcontent
   text-decoration:none;
   color:#eff;
 
+a:active.toprowcontent
+  text-decoration:none;
+  color:#eff;
+
 .homedropdown
   width:33%;
   left:33%;
