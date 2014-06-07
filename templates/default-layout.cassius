@@ -8,11 +8,13 @@ html
     background:#666;
 
 .toprow
-  box-shadow:0px 2px 15px #333;
+  box-shadow:0px 4px 0px #333;
+
   margin:0px 0px 0px 0px;
   padding:0px 0px 10px 0px;
+
   width:100%;
-  background: linear-gradient(to bottom, #999, #333);
+  background:#666;
 
 a.toprowcontent
   color:#fff;
