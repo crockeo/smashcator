@@ -1,11 +1,27 @@
+html
+  ::selection
+    color:#fff;
+    background:#666;
+
+  ::-moz-selection
+    color:#fff;
+    background:#666;
+
 .toprow
   box-shadow:0px 2px 15px #333;
   margin:0px 0px 0px 0px;
   padding:0px 0px 10px 0px;
   width:100%;
-  background: linear-gradient(to bottom, #fff, #eee);
+  background: linear-gradient(to bottom, #999, #333);
+
+a.toprowcontent
+  color:#fff;
+
+a:hover.toprowcontent
+  text-decoration:none;
+  color:#eff;
 
 .homedropdown
   width:33%;
   left:33%;
-  right:33%:
+  right:33%;

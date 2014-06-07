@@ -11,7 +11,7 @@ $doctype 5
       <div .col-md-10 .col-md-offset-1>
         <div .dropdown>
           <h1 .text-center .col-md-4>
-            <a data-toggle="dropdown" href="#">
+            <a .toprowcontent data-toggle="dropdown" href="#">
               Smashcator
               <b .caret>
 
@@ -26,10 +26,10 @@ $doctype 5
                 <a role="menuitem" href="http://github.com/Crockeo/smashcator">GitHub
 
         <h1 .text-center .col-md-4>
-          <a href="@{TournamentsR}">Tournaments
+          <a .toprowcontent href="@{TournamentsR}">Tournaments
 
         <h1 .text-center .col-md-4>
-          <a href="@{LoginR}">Login/Register
+          <a .toprowcontent href="@{LoginR}">Login/Register
 
     <div .container>
       ^{pageBody pc}
