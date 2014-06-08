@@ -4,6 +4,10 @@ import Yesod
 
 import Application
 import Foundation
+import SmashDB
 
 main :: IO ()
-main = warp 80 App
+main = do
+  runSqlite "smashcator.db" $ runMigration migrateAll
+  warp 80 App
+

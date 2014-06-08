@@ -1,4 +1,4 @@
-module Database where
+module SmashDB where
 
 import Database.Persistent.Sqilte
 import Database.Persistent.TH
