@@ -2,11 +2,16 @@ module Routes.Login where
 
 import Control.Applicative ((<$>), (<*>))
 import qualified Data.Text as T
+import Data.Hashable
+
+import Database.Persist.Sqlite
+import Database.Persist
 
 import Yesod
 
 import Foundation
 import WidgetFile
+import SmashDB
 
 data LoginPost    = LoginPost    T.Text T.Text
 data RegisterPost = RegisterPost T.Text T.Text T.Text
@@ -21,7 +26,16 @@ postLoginR = do
     <$> ireq textField     "username"
     <*> ireq passwordField "password"
 
-  redirect LoginR
+  users <- runSqlite dbLocation $ selectList [UserUsername ==. username, UserPassword ==. hash password] [LimitTo 1]
+
+  if null users
+    then do
+      setMessage "Invalid username / password."
+      redirect LoginR
+    else do
+      setSession "loggedin" username
+      setMessage "Logged in!"
+      redirect HomeR
 
 postRegisterR :: Handler ()
 postRegisterR = do
