@@ -3,6 +3,7 @@
 /contact         ContactR       GET
 /tournaments     TournamentsR   GET
 /login           LoginR         GET POST
+/logout          LogoutR        GET
 /register        RegisterR          POST
 /tournament/#Int TournamentR    GET
 /tournament      NewTournamentR     POST

@@ -22,6 +22,12 @@ getLoginR :: Handler Html
 getLoginR =
   defaultLayout ($(widgetFile "login"))
 
+getLogoutR :: Handler ()
+getLogoutR = do
+  deleteSession "loggedin"
+  setMessage "Logged out!"
+  redirect HomeR
+
 postLoginR :: Handler ()
 postLoginR = do
   (LoginPost username password) <- runInputPost $ LoginPost
