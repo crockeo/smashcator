@@ -1,5 +1,8 @@
 module Main where
 
+import Database.Persist.Sqlite
+import Database.Persist
+
 import Yesod
 
 import Application

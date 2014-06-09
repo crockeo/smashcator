@@ -14,9 +14,11 @@ cabal-version: >= 1.10
 executable smashcator
   default-extensions: MultiParamTypeClasses
                       OverloadedStrings
+                      FlexibleContexts
                       TemplateHaskell
                       TypeFamilies
                       QuasiQuotes
+                      GADTs
 
   hs-source-dirs: ./
                   Routes/
@@ -24,12 +26,16 @@ executable smashcator
   main-is: Main.hs
 
   build-depends: base == 4.6.*
+               , persistent-template
+               , persistent-sqlite
                , data-default
                , shakespeare
                , bytestring
+               , persistent
                , yesod-form
                , hashable
                , yesod
                , text
+               , time
 
   default-language: Haskell2010
