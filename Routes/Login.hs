@@ -3,6 +3,8 @@ module Routes.Login where
 import Control.Applicative ((<$>), (<*>))
 import qualified Data.Text as T
 import Data.Hashable
+import Data.Monoid (mconcat)
+import Data.Time.Clock
 
 import Database.Persist.Sqlite
 import Database.Persist
@@ -26,7 +28,7 @@ postLoginR = do
     <$> ireq textField     "username"
     <*> ireq passwordField "password"
 
-  users <- runSqlite dbLocation $ selectList [UserUsername ==. username, UserPassword ==. hash password] [LimitTo 1]
+  users <- runSqlite dbLocation $ selectList [UserUsername ==. username, UserPassword ==. hash password] []
 
   if null users
     then do
@@ -44,4 +46,21 @@ postRegisterR = do
     <*> ireq passwordField "password"
     <*> ireq passwordField "cpassword"
 
-  redirect LoginR
+  if password /= cpassword
+    then do
+      setMessage "Passwords do not match"
+      redirect LoginR
+    else do
+      users <- runSqlite dbLocation $ selectList [UserUsername ==. username] []
+
+      if null users
+        then do
+          runSqlite dbLocation $ do
+            time <- liftIO getCurrentTime
+            insert $ User username (hash password) Nothing Nothing Nothing Nothing time
+
+          setMessage "Registered!"
+          redirect LoginR
+        else do
+          setMessage "Username is taken!"
+          redirect LoginR
