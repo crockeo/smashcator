@@ -1,5 +1,7 @@
 module SmashDB where
 
+import qualified Data.Text as T
+
 import Database.Persist.Sqlite
 import Database.Persist.TH
 import Database.Persist
@@ -41,5 +43,5 @@ InvitedLink
 |]
 
 -- Storing the database location
-dbLocation :: FilePath
+dbLocation :: T.Text
 dbLocation = "smashcator.db"
