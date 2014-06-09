@@ -4,7 +4,7 @@ cabal.sandbox.config
 dist/
 
 # Sqlite3 databases
-*.sqlite3
+*.db
 
 # Yesod session files
 *.aes
