@@ -22,24 +22,15 @@ User
 Tournament
   title           String
   host            UserId
+  moderators      [UserId]
+  attending       [UserId]
+  invited         [UserId]
   public          Bool
   description     String  Maybe
   location        String  Maybe
   date            UTCTime Maybe
   ruleset         String  Maybe
   backgroundImage String  Maybe
-
-ModeratorLink
-  user       UserId
-  tournament TournamentId
-
-AttendingLink
-  user       UserId
-  tournament TournamentId
-
-InvitedLink
-  user       UserId
-  tournament TournamentId
 |]
 
 -- Storing the database location
