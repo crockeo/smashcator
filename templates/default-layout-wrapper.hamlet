@@ -15,15 +15,15 @@ $doctype 5
               Smashcator
               <b .caret>
 
-            <ul .homedropdown .dropdown-menu role="menu">
-              <li role="presentation">
-                <a role="menuitem" href="@{HomeR}">Home
-              <li role="presentation">
-                <a role="menuitem" href="@{InformationR}">Information
-              <li role="presentation">
-                <a role="menuitem" href="@{ContactR}">Contact
-              <li role="presentation">
-                <a role="menuitem" href="http://github.com/Crockeo/smashcator">GitHub
+              <ul .homedropdown .dropdown-menu role="menu">
+                <li role="presentation">
+                  <a role="menuitem" href="@{HomeR}">Home
+                <li role="presentation">
+                  <a role="menuitem" href="@{InformationR}">Information
+                <li role="presentation">
+                  <a role="menuitem" href="@{ContactR}">Contact
+                <li role="presentation">
+                 <a role="menuitem" href="http://github.com/Crockeo/smashcator">GitHub
 
         <h1 .text-center .col-md-4>
           <a .toprowcontent href="@{TournamentsR}">Tournaments

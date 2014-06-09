@@ -1,20 +1,20 @@
 html
   ::selection
     color:#fff;
-    background:#666;
+    background:#162136;
 
   ::-moz-selection
     color:#fff;
-    background:#666;
+    background:#162136;
 
 .toprow
-  box-shadow:0px 4px 0px #333;
-
   margin:0px 0px 0px 0px;
   padding:0px 0px 10px 0px;
 
   width:100%;
-  background:#666;
+
+  background:#2d426c;
+  box-shadow:0px 4px 0px #162136;
 
 a.toprowcontent
   color:#fff;
@@ -28,6 +28,6 @@ a:active.toprowcontent
   color:#eff;
 
 .homedropdown
-  width:33%;
-  left:33%;
-  right:33%;
+  width:40%;
+  left:30%;
+  right:30%;
