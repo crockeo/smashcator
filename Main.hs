@@ -11,6 +11,6 @@ import SmashDB
 
 main :: IO ()
 main = do
-  runSqlite "smashcator.db" $ runMigration migrateAll
+  runSqlite dbLocation $ runMigration migrateAll
   warp 80 App
 

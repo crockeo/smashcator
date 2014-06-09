@@ -6,6 +6,7 @@ import Database.Persist
 
 import Data.Time.Clock
 
+-- Initializing the data schema
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 User
   username String
@@ -38,3 +39,7 @@ InvitedLink
   user       UserId
   tournament TournamentId
 |]
+
+-- Storing the database location
+dbLocation :: FilePath
+dbLocation = "smashcator.db"
