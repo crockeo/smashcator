@@ -1,0 +1,10 @@
+$maybe tournament <- mtournament
+  <h3 .text-center>#{tournamentTitle tournament}
+  <hr>
+
+  $maybe description <- tournamentDescription tournament
+    <p>#{description}
+  $nothing
+    <p>No description!
+$nothing
+  <h3 .text-center>No such tournament with id: #{id}
