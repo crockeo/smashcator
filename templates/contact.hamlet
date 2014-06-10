@@ -1,4 +1,4 @@
-<h1 .text-center>Contact
+<h2 .text-center>Contact
 <hr>
 
 <form method="post" action="@{ContactR}" role="form">
