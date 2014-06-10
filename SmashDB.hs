@@ -22,10 +22,10 @@ User
 Tournament
   title           T.Text
   host            UserId
-  moderators      [UserId]
-  attending       [UserId]
-  invited         [UserId]
-  public          Bool
+  moderators      [UserId]       default=[]
+  attending       [UserId]       default=[]
+  invited         [UserId]       default=[]
+  public          Bool           default=False
   description     T.Text  Maybe
   location        T.Text  Maybe
   date            UTCTime Maybe
