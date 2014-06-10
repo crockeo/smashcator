@@ -7,14 +7,18 @@ html
     color:#fff;
     background:#162136;
 
+body
+  background:#162136
+
 .toprow
   margin:0px 0px 0px 0px;
   padding:0px 0px 10px 0px;
 
+  position:absolute;
+  height:15%;
   width:100%;
 
   background:#2d426c;
-  box-shadow:0px 4px 0px #162136;
 
 a.toprowcontent
   color:#fff;
@@ -31,3 +35,10 @@ a:active.toprowcontent
   width:40%;
   left:30%;
   right:30%;
+
+.bodycontainer
+  background:#fff;
+
+  position:absolute;
+  top:15%;
+  height:85%

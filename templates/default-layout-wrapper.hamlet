@@ -31,5 +31,5 @@ $doctype 5
         <h1 .text-center .col-md-4>
           <a .toprowcontent href="@{LoginR}">Login/Register
 
-    <div .container>
+    <div .col-md-10 .col-md-offset-1 .bodycontainer>
       ^{pageBody pc}
