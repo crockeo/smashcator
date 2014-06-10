@@ -1,0 +1,5 @@
+$maybe Entity userId user <- muser
+  <h2 .text-center>Page for #{userUsername user}
+  <h2 .text-center>YET TO BE COMPLETED
+$nothing
+  <h2 .text-center>No such user: #{username}

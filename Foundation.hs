@@ -2,6 +2,8 @@ module Foundation where
 
 --------------------
 -- Global Imports --
+import qualified Data.Text as T
+
 import Text.Hamlet (hamletFile)
 
 import Yesod
