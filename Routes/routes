@@ -1,6 +1,6 @@
 /                HomeR          GET
 /information     InformationR   GET
-/contact         ContactR       GET
+/contact         ContactR       GET POST
 /tournaments     TournamentsR   GET
 /login           LoginR         GET POST
 /logout          LogoutR        GET
