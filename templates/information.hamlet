@@ -1,16 +1,17 @@
-<h2 .text-center>Information
-<hr>
+<div .col-md-8 .col-md-offset-2>
+  <h2 .text-center>Information
+  <hr>
 
-<div .row>
-  <h3 .text-right .col-md-4>Author:
-  <h3 .col-md-6>Crockeo
+  <div .row>
+    <h3 .text-right .col-md-4>Author:
+    <h3 .col-md-6>Crockeo
 
-<div .row>
-  <h3 .text-right .col-md-4>Maintainer:
-  <h3 .col-md-6>
-    <a href="mailto:#{email}?subject=Smashcator">#{email}
+  <div .row>
+    <h3 .text-right .col-md-4>Maintainer:
+    <h3 .col-md-6>
+      <a href="mailto:#{email}?subject=Smashcator">#{email}
 
-<div .row>
-  <h3 .text-right .col-md-4>GitHub:
-  <h3 .col-md-6>
-    <a href="#{github}">#{github}
+  <div .row>
+    <h3 .text-right .col-md-4>GitHub:
+    <h3 .col-md-6>
+      <a href="#{github}">#{github}

@@ -1,14 +1,15 @@
-<h2 .text-center>Contact
-<hr>
+<div .col-md-8 .col-md-offset-2>
+  <h2 .text-center>Contact
+  <hr>
 
-<form method="post" action="@{ContactR}" role="form">
-  <div .form-group>
-    <label for="subjectInput">Subject
-    <input #subjectInput .form-control type="text" name="subject" placeholder="Enter subject">
+  <form method="post" action="@{ContactR}" role="form">
+    <div .form-group>
+      <label for="subjectInput">Subject
+      <input #subjectInput .form-control type="text" name="subject" placeholder="Enter subject">
 
-  <div .form-group>
-    <label for="bodyInput">Body
-    <textarea #bodyInput .form-control rows="8" name="message" placeholder="Enter message">
+    <div .form-group>
+      <label for="bodyInput">Body
+      <textarea #bodyInput .form-control rows="8" name="message" placeholder="Enter message">
 
-  <div .form-group>
-    <button .btn .btn-default type="Submit">Submit Message
+    <div .form-group>
+      <button .btn .btn-default type="Submit">Submit Message
