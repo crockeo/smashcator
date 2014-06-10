@@ -1,1 +1,16 @@
-<h1 .text-center>Information placeholder
+<h1 .text-center>Information
+<hr>
+
+<div .row>
+  <h2 .text-right .col-md-4>Author:
+  <h2 .col-md-6>Crockeo
+
+<div .row>
+  <h2 .text-right .col-md-4>Maintainer:
+  <h2 .col-md-6>
+    <a href="mailto:#{email}?subject=Smashcator">#{email}
+
+<div .row>
+  <h2 .text-right .col-md-4>GitHub:
+  <h2 .col-md-6>
+    <a href="#{github}">#{github}
