@@ -1,5 +1,32 @@
-$maybe Entity userId user <- muser
-  <h2 .text-center>Page for #{userUsername user}
-  <h2 .text-center>YET TO BE COMPLETED
-$nothing
-  <h2 .text-center>No such user: #{username}
+<div .col-md-6 .col-md-offset-3>
+  $maybe Entity userId user <- muser
+    <h2 .text-center>User page for #{userUsername user}
+    <div .row>
+      <div .col-md-6>
+        <h3>Username: #{userUsername user}
+        
+        $maybe shortbio <- userShortbio user
+          <div .col-md-5 .col-md-offset-1>
+            <p>#{shortbio}
+
+      <div .col-md-6>
+        <h4 .text-right>
+          <img width="128" height="128" src="/static/images/#{userUsername user}profile.png" alt="Profile picture" title="Profile picture">
+
+    <hr>
+  
+    $maybe longbio <- userLongbio user
+      <p>
+        <strong>Long bio:
+        <div .col-md-5 .col-md-offset-1>
+          #{longbio}
+    $nothing
+      <h4>No long bio.
+      $maybe loggedin <- mloggedin
+        $if loggedin == userUsername user
+          <a href="#">Edit?
+
+    <h2 .text-center>Placeholder
+
+  $nothing
+    <h2 .text-center>No such user: #{username}
