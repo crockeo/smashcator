@@ -20,9 +20,9 @@ mkYesodData "App" ($(parseRoutesFile "Routes/routes"))
 
 instance Yesod App where
   defaultLayout widget = do
-    App <- getYesod
-    sess <- getSession
-    mmsg <- getMessage
+    App       <- getYesod
+    mmsg      <- getMessage
+    mloggedin <- lookupSession "loggedin"
 
     pc <- widgetToPageContent $ do
       setTitle "Smashcator"

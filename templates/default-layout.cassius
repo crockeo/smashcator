@@ -10,6 +10,10 @@ html
 body
   background:#162136
 
+#msgcontainer
+  width:33%;
+  margin:0% 33% 0% 33%;
+
 .toprow
   margin:0px 0px 0px 0px;
   padding:0px 0px 10px 0px;

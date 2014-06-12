@@ -1,0 +1,3 @@
+$(function () {
+  $("#msgcontainer").fadeOut(1000);
+});

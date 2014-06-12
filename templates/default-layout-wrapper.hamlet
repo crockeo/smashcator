@@ -29,7 +29,23 @@ $doctype 5
           <a .toprowcontent href="@{TournamentsR}">Tournaments
 
         <h1 .text-center .col-md-4>
-          <a .toprowcontent href="@{LoginR}">Login/Register
+          $maybe loggedin <- mloggedin
+            <a .toprowcontent href="@{LogoutR}">Logout
+          $nothing
+            <a .toprowcontent href="@{LoginR}">Login/Register
 
     <div .col-md-10 .col-md-offset-1 .bodycontainer>
+      $maybe msg <- mmsg
+        <div #msgcontainer>
+          <h3 .text-center>
+            <small>#{msg}
+
+      <div .spacer>
+
+      $maybe loggedin <- mloggedin
+        <div .text-right>
+          <h4>
+            Logged in as
+            <a href="@{UserR loggedin}">#{loggedin}
+
       ^{pageBody pc}
