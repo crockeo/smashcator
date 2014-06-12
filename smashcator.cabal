@@ -5,6 +5,7 @@ version:          0.0.0
 synopsis:         A tournament locator for Super Smash Bros.
 author:           Crockeo
 maintainer:       Crockeo
+license:          AllRightsReserved
 category:         Web
 build-type:       Simple
 cabal-version: >= 1.10
