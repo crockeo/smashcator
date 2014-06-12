@@ -1,1 +1,10 @@
-<h1 .text-center>Home page placeholder
+<div .col-md-8 .col-md-offset-2>
+  <h2 .text-center>Home
+  <hr>
+
+  <h3 .text-center style="background:#eee;padding:20%;">Map placeholder!
+  <h4 .text-center>
+    <small>
+      Or you can look at a list of
+      <a href="@{TournamentsR}">tournaments
+      .
