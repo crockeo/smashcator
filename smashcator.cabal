@@ -33,6 +33,7 @@ executable smashcator
                , bytestring
                , persistent
                , yesod-form
+               , mime-mail
                , hashable
                , yesod
                , text
