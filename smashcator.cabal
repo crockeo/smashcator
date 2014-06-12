@@ -31,6 +31,7 @@ executable smashcator
                , persistent-sqlite
                , data-default
                , shakespeare
+               , smtps-gmail
                , bytestring
                , persistent
                , yesod-form

@@ -3,6 +3,9 @@
 cabal.sandbox.config
 dist/
 
+# Ignoring the gmail login information
+login
+
 # Sqlite3 databases
 *.db
 
