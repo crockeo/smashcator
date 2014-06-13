@@ -1,0 +1,16 @@
+<div .col-md-6 .col-md-offset-3>
+  $maybe Entity userId user <- muser
+    $maybe loggedin <- mloggedin
+      $if loggedin == userUsername user
+        <h2 .text-center>Placeholder page for editing your information!
+      $else
+        <h2 .text-center>
+          You cannot edit other people's information.
+    $nothing
+      <h2 .text-center>You're not logged in!
+      <h2 .text-center>
+        Try
+        <a href="@{LoginR}">logging
+        in before editing your information.
+  $nothing
+    <h2 .text-center>No such user: #{username}
