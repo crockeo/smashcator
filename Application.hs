@@ -15,6 +15,7 @@ import Routes.Tournaments
 import Routes.Login
 import Routes.Tournament
 import Routes.User
+import Routes.EditUser
 
 ----------
 -- Code --
