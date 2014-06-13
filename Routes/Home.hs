@@ -1,10 +1,6 @@
 module Routes.Home where
 
-import Yesod.Form
-import Yesod
-
-import Foundation
-import WidgetFile
+import Import
 
 getHomeR :: Handler Html
 getHomeR =

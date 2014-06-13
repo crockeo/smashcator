@@ -1,9 +1,6 @@
 module Routes.Tournaments where
 
-import Yesod
-
-import Foundation
-import WidgetFile
+import Import
 
 getTournamentsR :: Handler Html
 getTournamentsR = undefined

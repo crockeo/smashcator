@@ -1,17 +1,8 @@
 module Routes.User where
 
-import qualified Data.Text as T
+import Import
 
-import Database.Persist.Sqlite
-import Database.Persist
-
-import Yesod
-
-import Foundation
-import WidgetFile
-import SmashDB
-
-getUserR :: T.Text -> Handler Html
+getUserR :: Text -> Handler Html
 getUserR username = do
   pusers <- runSqlite dbLocation $ selectList [UserUsername ==. username] []
   mloggedin <- lookupSession "loggedin"

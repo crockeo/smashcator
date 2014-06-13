@@ -1,17 +1,9 @@
 module Routes.Contact where
 
 import qualified Data.Text.Lazy as LT
-import Network.Mail.Client.Gmail
 import qualified Data.Text as T
-import Control.Applicative ((<$>), (<*>))
-import Control.Concurrent
-import Control.Exception (SomeException, try)
-import Network.Mail.Mime
 
-import Yesod
-
-import Foundation
-import WidgetFile
+import Import
 
 data ContactPost = ContactPost T.Text T.Text
 
@@ -47,7 +39,7 @@ postContactR = do
     [Address (Just "Crockeo") "crockeo@gmail.com"]
     []
     []
-    ("Smashcator Contact - " `T.append` subject)
+    ("Smashcator Contact - " <> subject)
     (LT.pack $ T.unpack message)
     []
 

@@ -1,22 +1,12 @@
 module Routes.Login where
 
-import Control.Applicative ((<$>), (<*>))
-import qualified Data.Text as T
-import Data.Hashable
-import Data.Monoid (mconcat)
 import Data.Time.Clock
+import Data.Hashable
 
-import Database.Persist.Sqlite
-import Database.Persist
+import Import
 
-import Yesod
-
-import Foundation
-import WidgetFile
-import SmashDB
-
-data LoginPost    = LoginPost    T.Text T.Text
-data RegisterPost = RegisterPost T.Text T.Text T.Text
+data LoginPost    = LoginPost    Text Text
+data RegisterPost = RegisterPost Text Text Text
 
 getLoginR :: Handler Html
 getLoginR =

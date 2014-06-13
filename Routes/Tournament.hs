@@ -1,13 +1,6 @@
 module Routes.Tournament where
 
-import Database.Persist.Sqlite
-import Database.Persist
-
-import Yesod
-
-import Foundation
-import WidgetFile
-import SmashDB
+import Import
 
 getTournamentR :: Int -> Handler Html
 getTournamentR id = do
