@@ -6,4 +6,5 @@ import Import
 main :: IO ()
 main = do
   runSqlite dbLocation $ runMigration migrateAll
-  warp 80 App
+  s <- static "static"
+  warp 80 $ App s
