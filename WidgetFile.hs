@@ -9,4 +9,4 @@ import Data.Default (def)
 
 ----------
 -- Code --
-widgetFile name = widgetFileReload def name
+widgetFile = widgetFileReload def
