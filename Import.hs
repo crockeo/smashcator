@@ -1,34 +1,25 @@
-module Import ( module Data.Text
-              , module Data.Monoid
-              , module Network.Mail.Client.Gmail
-              , module Network.Mail.Mime
-              , module Control.Applicative
-              , module Database.Persist.Sqlite
-              , module Database.Persist
-              , module Yesod.Form
-              , module Yesod
-              , module Foundation
-              , module WidgetFile
-              , module SmashDB
-              , (<>) ) where
+module Import ( module Import
+              , (<>)
+              ) where
 
-import Data.Text (Text)
-import Data.Monoid (Monoid (mappend, mempty, mconcat))
+import Data.Monoid               as Import (Monoid (mappend, mempty, mconcat))
+import Data.Text                 as Import (Text)
 
-import Network.Mail.Client.Gmail
-import Network.Mail.Mime
+import Network.Mail.Client.Gmail as Import
+import Network.Mail.Mime         as Import
 
-import Control.Applicative ((<$>), (<*>), pure)
+import Control.Applicative       as Import ((<$>), (<*>), pure)
 
-import Database.Persist.Sqlite
-import Database.Persist
+import Database.Persist.Sqlite   as Import
+import Database.Persist          as Import
 
-import Yesod.Form
-import Yesod
+import Yesod.Static              as Import
+import Yesod.Form                as Import
+import Yesod                     as Import
 
-import Foundation
-import WidgetFile
-import SmashDB
+import Foundation                as Import
+import WidgetFile                as Import
+import SmashDB                   as Import
 
 infixr 5 <>
 (<>) :: Monoid m => m -> m -> m
