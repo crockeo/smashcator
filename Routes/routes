@@ -1,3 +1,5 @@
+/static StaticR Static getStatic
+
 /                  HomeR          GET
 /information       InformationR   GET
 /contact           ContactR       GET POST

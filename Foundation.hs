@@ -6,6 +6,7 @@ import qualified Data.Text as T
 
 import Text.Hamlet (hamletFile)
 
+import Yesod.Static
 import Yesod
 
 -------------------
@@ -15,12 +16,14 @@ import WidgetFile
 ----------
 -- Code --
 data App = App
+  { getStatic :: Static }
 
+staticFiles "static"
 mkYesodData "App" ($(parseRoutesFile "Routes/routes"))
 
 instance Yesod App where
   defaultLayout widget = do
-    App       <- getYesod
+    app       <- getYesod
     mmsg      <- getMessage
     mloggedin <- lookupSession "loggedin"
 
