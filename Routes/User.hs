@@ -1,5 +1,7 @@
 module Routes.User where
 
+import Control.Monad
+
 import Import
 
 getUserR :: Text -> Handler Html
@@ -8,6 +10,21 @@ getUserR username = do
   mloggedin <- lookupSession "loggedin"
 
   let muser = if null pusers
-               then Nothing
-               else Just $ head pusers in
+                then Nothing
+                else Just $ head pusers in do
+    hosted <-
+      case muser of
+        Nothing             -> return []
+        Just (Entity key _) -> runSqlite dbLocation $ selectList [TournamentHost ==. key] []
+
+    moderated <-
+      case muser of
+        Nothing             -> return []
+        Just (Entity key _) -> return [] -- TODO: Complete
+
+    attended <-
+      case muser of
+        Nothing             -> return []
+        Just (Entity key _) -> return [] -- TODO: Complete
+
     defaultLayout ($(widgetFile "user"))
