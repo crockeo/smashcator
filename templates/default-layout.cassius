@@ -46,3 +46,9 @@ a:active.toprowcontent
   position:absolute;
   top:15%;
   height:85%
+
+.userprofilepicture
+  border-style:solid;
+  border-width:2px;
+  border-color:#162136;
+  border-radius:5px;
