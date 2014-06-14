@@ -30,6 +30,7 @@ executable smashcator
                , persistent-template
                , persistent-sqlite
                , data-default
+               , yesod-static
                , shakespeare
                , smtps-gmail
                , bytestring
