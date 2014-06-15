@@ -1,7 +1,6 @@
 module Routes.Login where
 
 import Data.Time.Clock
-import Data.Hashable
 
 import Import
 
