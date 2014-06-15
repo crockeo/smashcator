@@ -2,7 +2,64 @@
   $maybe Entity userId user <- muser
     $maybe loggedin <- mloggedin
       $if loggedin == userUsername user
-        <h2 .text-center>Placeholder page for editing your information!
+        <h2 .text-center>
+          Edit Your Information
+          <br>
+          <small>#{username}
+
+        <hr>
+
+        <form method="post" action="@{EditUserR username}" role="form">
+          <div .row>
+            <div .col-md-6>
+              <div .form-group>
+                <label for="newPasswordInput">New Password
+                <input #newPasswordInput .form-control type="password" name="newpassword" placeholder="Enter new password">
+
+              <div .form-group>
+                <label for="confirmNewPasswordInput">Confirm New Password
+                <input #confirmNewPasswordInput .form-control type="password" name="cnewpassword" placeholder="Confirm new password">
+
+            <div .col-md-6 .text-center>
+              $maybe icon <- userIcon user
+                <img .userprofilepicture src="#{icon}" />
+              $nothing
+                <img .userprofilepicture src="/static/images/defaultprofile.svg" />
+              <h4>
+                <a href="#">Change Your Profile Picture?
+
+          <hr>
+
+          <div .form-group>
+            <label for="shortbioInput">Change Your Short Bio
+            <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio">
+              $maybe shortbio <- userShortbio user
+                #{shortbio}
+
+          <hr>
+
+          <div .form-group>
+            <label for="locationInput">Change Your Location
+            <input #locationInput .form-control type="text" name="location" placeholder="Change your location">
+              $maybe location <- userLocation user
+                #{location}
+
+          <hr>
+
+          <div .form-group>
+            <label for="longbioInput">Change Your Long Bio
+            <textarea #longbioInput .form-control name="longbio" placeholder="Change your long bio" rows="5">
+              $maybe longbio <- userLongbio user
+                #{longbio}
+
+          <hr>
+
+          <div .form-group>
+            <label for="passwordInput">Current Password
+            <input #passwordInput .form-control type="text" name="password" placeholder="Current password">
+
+          <div .form-group>
+            <button .btn .btn-default type="submit">Submit
       $else
         <h2 .text-center>
           You cannot edit other people's information.
