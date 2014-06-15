@@ -1,38 +1,38 @@
 module SmashDB where
 
-import qualified Data.Text as T
-
 import Database.Persist.Sqlite
 import Database.Persist.TH
 import Database.Persist
 
 import Data.Time.Clock
+import Data.Text (Text)
 
 -- Initializing the data schema
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 User
-  username T.Text
+  username Text
   password Int
-  shortbio T.Text  Maybe
-  longbio  T.Text  Maybe
-  location T.Text  Maybe
-  icon     T.Text  Maybe
-  signedup UTCTime default=CURRENT_TIME
+  shortbio Text    Maybe
+  longbio  Text    Maybe
+  location Text    Maybe
+  icon     Text    Maybe
+  signedup UTCTime       default=CURRENT_TIME
+  UniqueUser username
 
 Tournament
-  title           T.Text
+  title           Text
   host            UserId
   moderators      [UserId]       default=[]
   attending       [UserId]       default=[]
   invited         [UserId]       default=[]
   public          Bool           default=False
-  description     T.Text  Maybe
-  location        T.Text  Maybe
-  date            UTCTime Maybe
-  ruleset         T.Text  Maybe
-  backgroundImage T.Text  Maybe
+  description     Text     Maybe
+  location        Text     Maybe
+  date            UTCTime  Maybe
+  ruleset         Text     Maybe
+  backgroundImage Text     Maybe
 |]
 
 -- Storing the database location
-dbLocation :: T.Text
+dbLocation :: Text
 dbLocation = "smashcator.db"
