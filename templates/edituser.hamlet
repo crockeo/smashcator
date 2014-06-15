@@ -21,28 +21,35 @@
                 <input #confirmNewPasswordInput .form-control type="password" name="cnewpassword" placeholder="Confirm new password">
 
             <div .col-md-6 .text-center>
-              $maybe icon <- userIcon user
-                <img .userprofilepicture src="#{icon}" />
-              $nothing
-                <img .userprofilepicture src="/static/images/defaultprofile.svg" />
-              <h4>
-                <a href="#">Change Your Profile Picture?
+              <div .form-group>
+                $maybe icon <- userIcon user
+                  <img .userprofilepicture src="#{icon}" />
+                $nothing
+                  <img .userprofilepicture src="/static/images/defaultprofile.svg" />
+              <div. form-group>
+                <label for="iconInput">Icon Url
+                $maybe icon <- userIcon user
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon" value="#{icon}">
+                $nothing
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon">
 
           <hr>
 
           <div .form-group>
             <label for="shortbioInput">Change Your Short Bio
-            <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio">
-              $maybe shortbio <- userShortbio user
-                #{shortbio}
+            $maybe shortbio <- userShortbio user
+              <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio" value="#{shortbio}">
+            $nothing
+              <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio">
 
           <hr>
 
           <div .form-group>
             <label for="locationInput">Change Your Location
-            <input #locationInput .form-control type="text" name="location" placeholder="Change your location">
-              $maybe location <- userLocation user
-                #{location}
+            $maybe location <- userLocation user
+              <input #locationInput .form-control type="text" name="location" placeholder="Change your location" value="#{location}">
+            $nothing
+              <input #locationInput .form-control type="text" name="location" placeholder="Change your location">
 
           <hr>
 
@@ -56,7 +63,7 @@
 
           <div .form-group>
             <label for="passwordInput">Current Password
-            <input #passwordInput .form-control type="text" name="password" placeholder="Current password">
+            <input #passwordInput .form-control type="password" name="password" placeholder="Current password">
 
           <div .form-group>
             <button .btn .btn-default type="submit">Submit
