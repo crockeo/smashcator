@@ -13,10 +13,12 @@
               <small>
                 <a href="@{EditUserR $ userUsername user}">Edit your info?
 
-        $maybe shortbio <- userShortbio user
-          <h4>#{shortbio}
-        $nothing
-          <h4>No short bio.
+        <p>
+          $maybe shortbio <- userShortbio user
+            <strong>Short bio:
+            #{shortbio}
+          $nothing
+            <strong>No short bio.
 
       <div .col-md-6>
         <h4 .text-right>
@@ -40,7 +42,7 @@
     <p>
       $maybe location <- userLocation user
         <strong>Location:
-        #{location}
+        <a href="http://google.com/maps/place/#{location}">#{location}
       $nothing
         <strong>No location set.
 
