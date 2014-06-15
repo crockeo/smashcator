@@ -21,9 +21,9 @@
       <div .col-md-6>
         <h4 .text-right>
           $maybe icon <- userIcon user
-            <img .userprofilepicture width="128" height="128" src="/static/images/defaultprofile.svg" />
+            <img .userprofilepicture src="#{icon}" />
           $nothing
-            <img .userprofilepicture width="128" height="128" src="/static/images/defaultprofile.svg" />
+            <img .userprofilepicture src="/static/images/defaultprofile.svg" />
 
     <hr>
 
