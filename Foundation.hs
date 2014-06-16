@@ -35,7 +35,7 @@ instance Yesod App where
 
       addScriptRemote "http://code.jquery.com/jquery-2.1.1.min.js"
       addScriptRemote "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
-      andScriptRemote "http://parsleyjs.org/dist/parsley.min.js"
+      addScriptRemote "http://parsleyjs.org/dist/parsley.min.js"
 
       $(widgetFile "default-layout")
 

@@ -1,0 +1,2 @@
+$('#loginForm').parsley();
+$('#registerForm').parsley();
