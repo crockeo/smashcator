@@ -1,6 +1,7 @@
 module Routes.Login where
 
 import Data.Time.Clock
+import Data.Maybe
 
 import Import
 
@@ -23,9 +24,9 @@ postLoginR = do
     <$> ireq textField     "username"
     <*> ireq passwordField "password"
 
-  users <- runSqlite dbLocation $ selectList [UserUsername ==. username, UserPassword ==. hash password] []
+  muser <- runSqlite dbLocation $ getBy $ UniqueCombo username $ hash password
 
-  if null users
+  if isNothing muser
     then do
       setMessage "Invalid username / password."
       redirect LoginR
@@ -46,9 +47,9 @@ postRegisterR = do
       setMessage "Passwords do not match"
       redirect LoginR
     else do
-      users <- runSqlite dbLocation $ selectList [UserUsername ==. username] []
+      muser <- runSqlite dbLocation $ getBy $ UniqueName username
 
-      if null users
+      if isNothing muser
         then do
           runSqlite dbLocation $ do
             time <- liftIO getCurrentTime

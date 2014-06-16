@@ -4,7 +4,7 @@ import Import
 
 getUserR :: Text -> Handler Html
 getUserR username = do
-  muser <- runSqlite dbLocation $ selectFirst [UserUsername ==. username] []
+  muser <- runSqlite dbLocation $ getBy $ UniqueName username
   mloggedin <- lookupSession "loggedin"
 
   hosted <-

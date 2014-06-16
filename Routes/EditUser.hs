@@ -6,7 +6,7 @@ data EditUserPost = EditUserPost (Maybe Text) (Maybe Text) (Maybe Text) (Maybe T
 
 getEditUserR :: Text -> Handler Html
 getEditUserR username = do
-  muser <- runSqlite dbLocation $ selectFirst [UserUsername ==. username] []
+  muser <- runSqlite dbLocation $ getBy $ UniqueName username
   mloggedin <- lookupSession "loggedin"
 
   defaultLayout ($(widgetFile "edituser"))
@@ -22,7 +22,7 @@ postEditUserR username = do
     <*> iopt textField     "longbio"
     <*> ireq passwordField "password"
 
-  muser <- runSqlite dbLocation $ selectFirst [UserUsername ==. username, UserPassword ==. hash password] []
+  muser <- runSqlite dbLocation $ getBy $ UniqueCombo username $ hash password
 
   case muser of
     Nothing                   -> do

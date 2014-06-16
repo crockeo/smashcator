@@ -17,7 +17,9 @@ User
   location Text    Maybe
   icon     Text    Maybe
   signedup UTCTime       default=CURRENT_TIME
-  UniqueUser username
+
+  UniqueName  username
+  UniqueCombo username password
 
 Tournament
   title           Text
