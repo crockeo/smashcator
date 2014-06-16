@@ -10,6 +10,7 @@ import Network.Mail.Client.Gmail as Import
 import Network.Mail.Mime         as Import
 
 import Control.Applicative       as Import ((<$>), (<*>), pure)
+import Control.Monad             as Import
 
 import Database.Persist.Sqlite   as Import
 import Database.Persist          as Import

@@ -2,8 +2,6 @@ module Routes.EditUser where
 
 import Import
 
-import Data.String
-
 data EditUserPost = EditUserPost (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) Text
 
 getEditUserR :: Text -> Handler Html
@@ -36,9 +34,8 @@ postEditUserR username = do
           (Nothing, _) -> return ()
           (_, Nothing) -> return ()
           (Just newpassword, Just cnewpassword) ->
-            if newpassword == cnewpassword
-              then update userId [UserPassword =. hash newpassword]
-              else return ()
+            when (newpassword == cnewpassword) $
+              update userId [UserPassword =. hash newpassword]
 
         update userId [UserIcon     =. micon    ]
         update userId [UserShortbio =. mshortbio]
