@@ -1,0 +1,18 @@
+<div .col-md-8 .col-md-offset-2>
+  $if null tournaments
+    <h2 .text-center>There are no tournaments yet.
+    <h3 .text-center>
+      <a href="@{NewTournamentR}">Make the first tournament?
+  $else
+    <h2 .text-center>Tournaments
+    <h3 .text-center>
+      <a href="@{NewTournamentR}">Make a new tournament?
+
+    <hr>
+
+    $forall Entity tournamentId tournament <- tournaments
+      <div .row>
+        <h3>#{tournamentTitle tournament}
+        \ - #
+        $maybe description <- tournamentDescription tournament
+          #{description}

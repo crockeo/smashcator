@@ -8,7 +8,8 @@ getTournamentR id = do
   defaultLayout ($(widgetFile "tournament"))
 
 getNewTournamentR :: Handler Html
-getNewTournamentR = undefined
+getNewTournamentR =
+  defaultLayout ($(widgetFile "newtournament"))
 
 postNewTournamentR :: Handler Html
 postNewTournamentR = undefined
