@@ -40,5 +40,8 @@ instance Yesod App where
 
     giveUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
+  errorHandler NotFound = redirect NotFoundR
+  errorHandler other    = defaultErrorHandler other
+
 instance RenderMessage App FormMessage where
   renderMessage _ _ = defaultFormMessage

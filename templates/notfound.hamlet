@@ -1,0 +1,13 @@
+<h2 .text-center>
+  Error 404
+  <br>
+  <small>Page not found.
+
+<h4 .text-center>Here, play with this canvas instead!
+
+<canvas #drawing .col-md-10 .col-md-offset-1>
+
+<p .text-justify .col-md-6 .col-md-offset-3>
+  Press your left mouse button and drag to draw on it. To erase, press your
+  right mouse button and drag. The eraser's size is a bit larger than the pen's
+  size to let you erase things easier.

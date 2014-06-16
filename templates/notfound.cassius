@@ -1,0 +1,6 @@
+#drawing
+  height:200px;
+  border-style:solid;
+  border-width:2px;
+  border-color:#162136;
+  border-radius:5px;

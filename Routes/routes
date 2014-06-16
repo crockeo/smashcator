@@ -11,3 +11,4 @@
 /tournament        NewTournamentR GET POST
 /user/#T.Text      UserR          GET
 /user/#T.Text/edit EditUserR      GET POST
+/404               NotFoundR      GET
