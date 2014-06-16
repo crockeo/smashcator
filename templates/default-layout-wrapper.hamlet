@@ -37,11 +37,7 @@ $doctype 5
     <div .col-md-10 .col-md-offset-1 .bodycontainer>
       $maybe msg <- mmsg
         <div #msgcontainer>
-          <p style="position:absolute">
-            <small>
-              <a href="#">Close.
-
-          <h3 .text-center>
+          <h3 .text-center .msg>
             <small>#{msg}
 
       <div .spacer>

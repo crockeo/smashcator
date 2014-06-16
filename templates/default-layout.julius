@@ -1,3 +1,7 @@
+// Automatically fading out the msg container after 10 seconds
+$('#msgcontainer').delay(10000).fadeOut(1000);
+
+// Fading out the msg container if you click on it
 $('#msgcontainer').click(function () {
   $('#msgcontainer').fadeOut(1000);
 });

@@ -16,7 +16,13 @@ body
 
   width:16%;
   margin:20px 41% 0% 41%;
-  padding:3px 10px 10px 10px;
+
+#msgcontainer:hover
+  background:#eee;
+
+.msg
+  padding:15px 20px 15px 20px;
+  margin:5px;
 
 .toprow
   margin:0px 0px 0px 0px;
