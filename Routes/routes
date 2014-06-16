@@ -8,6 +8,6 @@
 /logout            LogoutR        GET
 /register          RegisterR          POST
 /tournament/#Int   TournamentR    GET
-/tournament        NewTournamentR     POST
+/tournament        NewTournamentR GET POST
 /user/#T.Text      UserR          GET
 /user/#T.Text/edit EditUserR      GET POST
