@@ -2,6 +2,8 @@ module Routes.EditUser where
 
 import Import
 
+import Data.String
+
 data EditUserPost = EditUserPost (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) (Maybe Text) Text
 
 getEditUserR :: Text -> Handler Html
@@ -30,15 +32,13 @@ postEditUserR username = do
       redirect $ EditUserR username
     Just (Entity userId user) -> do
       runSqlite dbLocation $ do
-        case mnewpassword of 
-          Nothing          -> return ()
-          Just newpassword ->
-            case mcnewpassword of
-              Nothing -> return ()
-              Just cnewpassword ->
-                if newpassword == cnewpassword
-                  then update userId [UserPassword =. hash newpassword]
-                  else return ()
+        case (mnewpassword, mcnewpassword) of
+          (Nothing, _) -> return ()
+          (_, Nothing) -> return ()
+          (Just newpassword, Just cnewpassword) ->
+            if newpassword == cnewpassword
+              then update userId [UserPassword =. hash newpassword]
+              else return ()
 
         update userId [UserIcon     =. micon    ]
         update userId [UserShortbio =. mshortbio]
