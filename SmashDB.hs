@@ -23,16 +23,17 @@ User
 
 Tournament
   title           Text
+  location        Text     Maybe
+  date            UTCTime  Maybe
+  backgroundImage Text     Maybe
+  games           [Text]         default=[]
+  description     Text
+  ruleset         Text
   host            UserId
   moderators      [UserId]       default=[]
   attending       [UserId]       default=[]
   invited         [UserId]       default=[]
   public          Bool           default=False
-  description     Text     Maybe
-  location        Text     Maybe
-  date            UTCTime  Maybe
-  ruleset         Text     Maybe
-  backgroundImage Text     Maybe
 |]
 
 -- Storing the database location

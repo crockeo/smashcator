@@ -13,6 +13,4 @@
     $forall Entity tournamentId tournament <- tournaments
       <div .row>
         <h3>#{tournamentTitle tournament}
-        \ - #
-        $maybe description <- tournamentDescription tournament
-          #{description}
+        \ - #{tournamentDescription tournament}
