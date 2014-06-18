@@ -11,5 +11,5 @@ getNewTournamentR :: Handler Html
 getNewTournamentR =
   defaultLayout ($(widgetFile "newtournament"))
 
-postNewTournamentR :: Handler Html
-postNewTournamentR = undefined
+postNewTournamentR :: Handler ()
+postNewTournamentR = redirect NewTournamentR
