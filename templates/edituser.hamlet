@@ -9,7 +9,7 @@
 
         <hr>
 
-        <form method="post" action="@{EditUserR username}" role="form">
+        <form #editForm method="post" action="@{EditUserR username}" role="form">
           <div .row>
             <div .col-md-6>
               <div .form-group>
@@ -18,7 +18,10 @@
 
               <div .form-group>
                 <label for="confirmNewPasswordInput">Confirm New Password
-                <input #confirmNewPasswordInput .form-control type="password" name="cnewpassword" placeholder="Confirm new password">
+                <input #confirmNewPasswordInput .form-control type="password" name="cnewpassword" placeholder="Confirm new password"
+                  data-parsley-equalto="#newPasswordInput"
+                  data-parsley-equalto-message="Passwords do not match."
+                  data-parsley-validate-if-empty>
 
             <div .col-md-6 .text-center>
               <div .form-group>
@@ -29,9 +32,11 @@
               <div. form-group>
                 <label for="iconInput">Icon Url
                 $maybe icon <- userIcon user
-                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon" value="#{icon}">
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon" value="#{icon}"
+                    data-parsley-type="url">
                 $nothing
-                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon">
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon"
+                    data-parsley-type="url">
 
           <hr>
 
@@ -63,7 +68,7 @@
 
           <div .form-group>
             <label for="passwordInput">Current Password
-            <input #passwordInput .form-control type="password" name="password" placeholder="Current password">
+            <input #passwordInput .form-control type="password" name="password" placeholder="Current password" required>
 
           <div .form-group>
             <button .btn .btn-default type="submit">Submit
