@@ -1,2 +1,4 @@
-$('#loginForm').parsley();
-$('#registerForm').parsley();
+$(document).ready(function () {
+  parslify('#loginForm');
+  parslify('#registerForm');
+});
