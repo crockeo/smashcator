@@ -1,0 +1,9 @@
+$(document).ready(function () {
+  $('#publicHelp').hide();
+  $('#publicHelpHover').hover(
+    function () { $('#publicHelp').show(); },
+    function () { $('#publicHelp').hide(); }
+  );
+
+  parslify('#newTournamentForm');
+});
