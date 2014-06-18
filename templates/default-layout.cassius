@@ -10,6 +10,10 @@ html
 body
   background:#162136
 
+.parsley-errors-list
+  list-style-type:none;
+  padding:2px 2px 2px 20px;
+
 #msgcontainer
   border-radius:5px;
   box-shadow:0px 0px 4px #162136;

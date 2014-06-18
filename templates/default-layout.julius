@@ -1,3 +1,16 @@
+// Adding parsley to a form
+var parslify = function(name) {
+  $(name).parsley()
+         .subscribe('parsley:field:success', function (field) {
+    field.$element.closest('.form-group').removeClass('has-error').addClass('has-success');
+  })
+         .subscribe('parsley:field:error'  , function (field) {
+    field.$element.closest('.form-group').removeClass('has-success').addClass('has-error');
+  });
+
+  $('.parsley-errors-list').wrap('<h4><small></small></h4>');
+};
+
 // Fading out the msg container if you click on it
 $('#msgcontainer').click(function () {
   $('#msgcontainer').fadeOut(1000);
