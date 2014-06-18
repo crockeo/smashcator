@@ -6,11 +6,13 @@
     <form #loginForm method="post" action="@{LoginR}" role="form">
       <div .form-group>
         <label for="loginUsernameInput">Username
-        <input #loginUsernameInput .form-control type="text" name="username" placeholder="Enter username" required>
+        <input #loginUsernameInput .form-control type="text" name="username" placeholder="Enter username"
+          required>
 
       <div .form-group>
         <label for="loginPasswordInput">Password
-        <input #loginPasswordInput .form-control type="password" name="password" placeholder="Enter password" required>
+        <input #loginPasswordInput .form-control type="password" name="password" placeholder="Enter password"
+          required>
 
       <div .form-group>
         <button .btn .btn-default type="Submit">Login
@@ -22,15 +24,20 @@
     <form #registerForm method="post" action="@{RegisterR}" role="form">
       <div .form-group>
         <label for="registerUsernameInput">Username
-        <input #registerUsernameInput .form-control type="text" name="username" placeholder="Enter username" required>
+        <input #registerUsernameInput .form-control type="text" name="username" placeholder="Enter username"
+          required>
 
       <div .form-group>
         <label for="registerPasswordInput">Password
-        <input #registerPasswordInput .form-control type="password" name="password" placeholder="Enter password" required>
+        <input #registerPasswordInput .form-control type="password" name="password" placeholder="Enter password"
+          required>
 
       <div .form-group>
         <label for="registerCPasswordInput">Confirm Password
-        <input #registerCPasswordInput .form-control type="password" name="cpassword" placeholder="Confirm password" required data-parsley-equalto="#registerPasswordInput">
+        <input #registerCPasswordInput .form-control type="password" name="cpassword" placeholder="Confirm password"
+          required
+          data-parsley-equalto="#registerPasswordInput"
+          data-parsley-equalto-message="Passwords do not match.">
 
       <div .form-group>
         <button .btn .btn-default type="Submit">Register
