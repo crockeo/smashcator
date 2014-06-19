@@ -3,65 +3,6 @@
 
   <hr>
 
-  <form #newTournamentForm method="post" action="@{NewTournamentR}" role="form">
-    <div .form-group>
-      <label>Values with * are required
-
-    <div .checkbox>
-      <label>
-        <input type="checkbox" name="public">
-        Public
-        <span #publicHelpHover>
-          <a href="#">(?)
-          <span #publicHelp>
-            Anyone can join a public tourmament.
-            Only those invited can join a private tournament.
-
-    <div .row>
-      <div .form-group .col-md-7>
-        <label .control-label for="#titleInput">Title*
-        <input #titleInput .form-control type="text" name="title" placeholder="Enter title"
-          required>
-
-    <div .row>
-      <div .form-group .col-md-7>
-        <label .control-label for="#locationInput">Location
-        <input #locationInput .form-control type="text" name="location" placeholder="Enter location">
-
-    <div .row>
-      <div .form-group .col-md-7>
-        <label .control-label for="#dateInput">Date
-        <input #dateInput .form-control type="text" name="date" placeholder="Enter date">
-
-    <div .row>
-      <div .form-group .col-md-7>
-        <label .control-label for="#backgroundInput">Background
-        <input #backgroundInput .form-control name="background" placeholder="Enter background url"
-          data-parsley-type="url">
-
-    <div .form-group>
-      <label .control-label>Games*
-      
-      <br>
-
-      <input name="games" type="checkbox" value="64"
-        required
-        data-parsley-mincheck="1">
-        <label .control-label>Super Smash Bros. 64
-      <input name="games" type="checkbox" value="melee">
-        <label .control-label>Super Smash Bros. Melee
-      <input name="games" type="checkbox" value="brawl">
-        <label .control-label>Super Smash Bros. Brawl
-      <input name="games" type="checkbox" value="projectm">
-        <label .control-label>Project M
-
-    <div .form-group>
-      <label .control-label for="#descriptionInput">Description
-      <textarea #descriptionInput .form-control name="description" rows="4" placeholder="Enter description">
-
-    <div .form-group>
-      <label .control-label for="#rulesetInput">Ruleset
-      <textarea #rulesetInput .form-control name="ruleset" rows="4" placeholder="Enter ruleset">
-
-    <div .form-group>
-      <button .btn .btn-default type="Submit">Create New Tournament
+  <form #newTournamentForm method="post" action="@{NewTournamentR}" enctype="#{enctype}" role="form">
+    ^{form}
+    <button .btn .btn-default type="submit">Submit
