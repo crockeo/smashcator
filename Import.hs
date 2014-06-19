@@ -15,6 +15,7 @@ import Control.Monad             as Import
 import Database.Persist.Sqlite   as Import
 import Database.Persist          as Import
 
+import Yesod.Form.Bootstrap3     as Import
 import Yesod.Static              as Import
 import Yesod.Form                as Import
 import Yesod                     as Import
