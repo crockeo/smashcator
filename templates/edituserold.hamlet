@@ -1,0 +1,77 @@
+<div .col-md-6 .col-md-offset3>
+  $maybe Entity userId user <- muser
+    $maybe loggedin <- mloggedin
+      $if loggedin == userUsername user
+        <form #editForm method="post" action="@{EditUserR username}" role="form">
+          <div .row>
+            <div .col-md-6>
+              <div .form-group>
+                <label for="newPasswordInput">New Password
+                <input #newPasswordInput .form-control type="password" name="newpassword" placeholder="Enter new password">
+
+              <div .form-group>
+                <label for="confirmNewPasswordInput">Confirm New Password
+                <input #confirmNewPasswordInput .form-control type="password" name="cnewpassword" placeholder="Confirm new password"
+                  data-parsley-equalto="#newPasswordInput"
+                  data-parsley-equalto-message="Passwords do not match."
+                  data-parsley-validate-if-empty>
+
+            <div .col-md-6 .text-center>
+              <div .form-group>
+                $maybe icon <- userIcon user
+                  <img .userprofilepicture src="#{icon}" />
+                $nothing
+                  <img .userprofilepicture src="/static/images/defaultprofile.svg" />
+              <div. form-group>
+                <label for="iconInput">Icon Url
+                $maybe icon <- userIcon user
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon" value="#{icon}"
+                    data-parsley-type="url">
+                $nothing
+                  <input #iconInput .form-control type="text" name="icon" placeholder="Change your icon"
+                    data-parsley-type="url">
+
+          <hr>
+
+          <div .form-group>
+            <label for="shortbioInput">Change Your Short Bio
+            $maybe shortbio <- userShortbio user
+              <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio" value="#{shortbio}">
+            $nothing
+              <input #shortbioInput .form-control type="text" name="shortbio" placeholder="Change your short bio">
+
+          <hr>
+
+          <div .form-group>
+            <label for="locationInput">Change Your Location
+            $maybe location <- userLocation user
+              <input #locationInput .form-control type="text" name="location" placeholder="Change your location" value="#{location}">
+            $nothing
+              <input #locationInput .form-control type="text" name="location" placeholder="Change your location">
+
+          <hr>
+
+          <div .form-group>
+            <label for="longbioInput">Change Your Long Bio
+            <textarea #longbioInput .form-control name="longbio" placeholder="Change your long bio" rows="5">
+              $maybe longbio <- userLongbio user
+                #{longbio}
+
+          <hr>
+
+          <div .form-group>
+            <label for="passwordInput">Current Password
+            <input #passwordInput .form-control type="password" name="password" placeholder="Current password" required>
+
+          <div .form-group>
+            <button .btn .btn-default type="submit">Submit
+      $else
+        <h2 .text-center>You cannot edit other people's information.
+    $nothing
+      <h2 .text-center>You're not logged in!
+      <h2 .text-center>
+        Try
+        <a href="@{LoginR}">logging
+        in before editing your information.
+  $nothing
+    <h2 .text-center>No such user: #{username}
