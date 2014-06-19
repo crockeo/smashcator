@@ -24,6 +24,8 @@ import Foundation                as Import
 import WidgetFile                as Import
 import SmashDB                   as Import
 
+type Form a = Html -> MForm Handler (FormResult a, Widget)
+
 infixr 5 <>
 (<>) :: Monoid m => m -> m -> m
 (<>) = mappend
