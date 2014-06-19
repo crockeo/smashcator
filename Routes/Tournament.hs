@@ -19,9 +19,9 @@ newTournamentForm = renderBootstrap3 BootstrapBasicForm $ NewTournament
   <*> areq textareaField                   (withPlaceholder "Enter ruleset"              $ bfs ("Ruleset"         :: Text)) Nothing
   where gamesList :: [(Text, Text)]
         gamesList = [ ("Super Smash Bros. 64"   , "64"   )
-                    , ("Super Smash Bros. Melee", "melee")
-                    , ("Super Smash Bros. Brawl", "brawl")
-                    , ("Project M"              , "pm"   )
+                    , ("Super Smash Bros. Melee", "Melee")
+                    , ("Super Smash Bros. Brawl", "Brawl")
+                    , ("Project M"              , "PM"   )
                     ]
 
 getTournamentR :: Int -> Handler Html
