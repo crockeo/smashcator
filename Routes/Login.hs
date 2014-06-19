@@ -5,11 +5,24 @@ import Data.Maybe
 
 import Import
 
-data LoginPost    = LoginPost    Text Text
-data RegisterPost = RegisterPost Text Text Text
+data Login    = Login    Text Text
+data Register = Register Text Text Text
+
+loginForm :: Html -> MForm Handler (FormResult Login, Widget)
+loginForm = renderBootstrap3 BootstrapBasicForm $ Login
+  <$> areq textField     (withPlaceholder "Enter username" $ bfs ("Username" :: Text)) Nothing
+  <*> areq passwordField (withPlaceholder "Enter password" $ bfs ("Password" :: Text)) Nothing
+
+registerForm :: Html -> MForm Handler (FormResult Register, Widget)
+registerForm = renderBootstrap3 BootstrapBasicForm $ Register
+  <$> areq textField     (withPlaceholder "Enter username"   $ bfs ("Username"         :: Text)) Nothing
+  <*> areq passwordField (withPlaceholder "Enter password"   $ bfs ("Password"         :: Text)) Nothing
+  <*> areq passwordField (withPlaceholder "Confirm password" $ bfs ("Confirm Password" :: Text)) Nothing
 
 getLoginR :: Handler Html
-getLoginR =
+getLoginR = do
+  (loginForm   , loginEnctype   ) <- generateFormPost loginForm
+  (registerForm, registerEnctype) <- generateFormPost registerForm
   defaultLayout ($(widgetFile "login"))
 
 getLogoutR :: Handler ()
@@ -20,43 +33,48 @@ getLogoutR = do
 
 postLoginR :: Handler ()
 postLoginR = do
-  (LoginPost username password) <- runInputPost $ LoginPost
-    <$> ireq textField     "username"
-    <*> ireq passwordField "password"
+  ((result, _), _) <- runFormPost loginForm
 
-  muser <- runSqlite dbLocation $ getBy $ UniqueCombo username $ hash password
-
-  if isNothing muser
-    then do
-      setMessage "Invalid username / password."
+  case result of
+    FormFailure _ -> do
+      setMessage "Could not validate the form."
       redirect LoginR
-    else do
-      setSession "loggedin" username
-      setMessage "Logged in!"
-      redirect HomeR
-
-postRegisterR :: Handler ()
-postRegisterR = do
-  (RegisterPost username password cpassword) <- runInputPost $ RegisterPost
-    <$> ireq textField     "username"
-    <*> ireq passwordField "password"
-    <*> ireq passwordField "cpassword"
-
-  if password /= cpassword
-    then do
-      setMessage "Passwords do not match"
-      redirect LoginR
-    else do
-      muser <- runSqlite dbLocation $ getBy $ UniqueName username
+    FormSuccess (Login username password) -> do
+      muser <- runSqlite dbLocation $ getBy $ UniqueCombo username $ hash password
 
       if isNothing muser
         then do
-          runSqlite dbLocation $ do
-            time <- liftIO getCurrentTime
-            insert $ User username (hash password) Nothing Nothing Nothing Nothing time
-
-          setMessage "Registered!"
+          setMessage "Invalid username / password."
           redirect LoginR
         else do
-          setMessage "Username is taken!"
+          setSession "loggedin" username
+          setMessage "Logged in!"
+          redirect HomeR
+
+postRegisterR :: Handler ()
+postRegisterR = do
+  ((result, _), _) <- runFormPost registerForm
+
+  case result of
+    FormFailure _ -> do
+      setMessage "Could not validate the form."
+      redirect LoginR
+    FormSuccess (Register username password cpassword) -> do
+      if password /= cpassword
+        then do
+          setMessage "Passwords do not match"
           redirect LoginR
+        else do
+          muser <- runSqlite dbLocation $ getBy $ UniqueName username
+
+          if isNothing muser
+            then do
+              runSqlite dbLocation $ do
+                time <- liftIO getCurrentTime
+                insert $ User username (hash password) Nothing Nothing Nothing Nothing time
+
+              setMessage "Registered!"
+              redirect LoginR
+            else do
+              setMessage "Username is taken!"
+              redirect LoginR
