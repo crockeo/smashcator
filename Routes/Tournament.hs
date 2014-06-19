@@ -2,15 +2,7 @@ module Routes.Tournament where
 
 import Import
 
-data NewTournament = NewTournament
-  { public          :: Bool
-  , title           :: Text
-  , location        :: Text
-  , date            :: Text
-  , backgroundImage :: (Maybe Text)
-  , games           :: [Text]
-  , description     :: Textarea
-  , ruleset         :: Textarea }
+data NewTournament = NewTournament Bool Text Text Text (Maybe Text) [Text] Textarea Textarea
   deriving (Show)
 
 newTournamentForm :: Html -> MForm Handler (FormResult NewTournament, Widget)
