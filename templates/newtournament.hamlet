@@ -5,4 +5,7 @@
 
   <form #newTournamentForm method="post" action="@{NewTournamentR}" enctype="#{enctype}" role="form">
     ^{form}
-    <button .btn .btn-default type="submit">Submit
+    
+    <div .form-group>
+      <button .btn .btn-default type="submit">Submit
+
