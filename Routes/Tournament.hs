@@ -7,7 +7,7 @@ import Import
 data NewTournament = NewTournament Bool Text (Maybe Text) (Maybe Text) (Maybe Text) [Text] Textarea Textarea
   deriving (Show)
 
-newTournamentForm :: Html -> MForm Handler (FormResult NewTournament, Widget)
+newTournamentForm :: Form NewTournament
 newTournamentForm = renderBootstrap3 BootstrapBasicForm $ NewTournament
   <$> areq checkBoxField                   "Public"                                                                         Nothing
   <*> areq textField                       (withPlaceholder "Enter title"                $ bfs ("Title"           :: Text)) Nothing

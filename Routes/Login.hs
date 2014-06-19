@@ -8,12 +8,12 @@ import Import
 data Login    = Login    Text Text
 data Register = Register Text Text Text
 
-loginForm :: Html -> MForm Handler (FormResult Login, Widget)
+loginForm :: Form Login
 loginForm = renderBootstrap3 BootstrapBasicForm $ Login
   <$> areq textField     (withPlaceholder "Enter username" $ bfs ("Username" :: Text)) Nothing
   <*> areq passwordField (withPlaceholder "Enter password" $ bfs ("Password" :: Text)) Nothing
 
-registerForm :: Html -> MForm Handler (FormResult Register, Widget)
+registerForm :: Form Register
 registerForm = renderBootstrap3 BootstrapBasicForm $ Register
   <$> areq textField     (withPlaceholder "Enter username"   $ bfs ("Username"         :: Text)) Nothing
   <*> areq passwordField (withPlaceholder "Enter password"   $ bfs ("Password"         :: Text)) Nothing
