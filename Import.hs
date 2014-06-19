@@ -2,6 +2,7 @@ module Import ( module Import
               , (<>)
               ) where
 
+import Data.Time.Clock           as Import
 import Data.Hashable             as Import
 import Data.Monoid               as Import (Monoid (mappend, mempty, mconcat))
 import Data.Text                 as Import (Text)
