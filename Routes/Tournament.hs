@@ -5,7 +5,7 @@ import qualified Data.Text as T hiding (Text)
 import Import
 import Utils
 
-data NewTournament = NewTournament Bool Text (Maybe Text) (Maybe Text) (Maybe Text) [Text] Textarea Textarea
+data NewTournament = NewTournament Bool Text (Maybe Text) (Maybe Day) (Maybe Text) [Text] Textarea Textarea
   deriving (Show)
 
 newTournamentForm :: Form NewTournament
@@ -13,7 +13,7 @@ newTournamentForm = renderBootstrap3 BootstrapBasicForm $ NewTournament
   <$> areq checkBoxField                   "Public"                                                                         Nothing
   <*> areq textField                       (withPlaceholder "Enter title"                $ bfs ("Title"           :: Text)) Nothing
   <*> aopt textField                       (withPlaceholder "Enter location"             $ bfs ("Location"        :: Text)) Nothing
-  <*> aopt textField                       (withPlaceholder "Enter date"                 $ bfs ("Date"            :: Text)) Nothing
+  <*> aopt dayField                        (withPlaceholder "Enter date"                 $ bfs ("Date"            :: Text)) Nothing
   <*> aopt textField                       (withPlaceholder "Enter background image url" $ bfs ("BackgroundImage" :: Text)) Nothing
   <*> areq (checkboxesFieldList gamesList) "Games:"                                                                         Nothing
   <*> areq textareaField                   (withPlaceholder "Enter description"          $ bfs ("Description"     :: Text)) Nothing
@@ -60,7 +60,7 @@ postNewTournamentR = do
           runSqlite dbLocation $
             insert $ Tournament { tournamentTitle           = title
                                 , tournamentLocation        = location
-                                , tournamentDate            = fmap (fst . head . reads . T.unpack) date
+                                , tournamentDate            = fmap makeUTCTime date
                                 , tournamentBackgroundImage = backgroundImage
                                 , tournamentGames           = games
                                 , tournamentDescription     = unTextarea description

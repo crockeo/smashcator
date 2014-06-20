@@ -2,6 +2,9 @@ module Utils where
 
 import Import
 
+makeUTCTime :: Day -> UTCTime
+makeUTCTime day = UTCTime day $ secondsToDiffTime 0
+
 canSee :: Tournament -> Maybe UserId -> Bool
 canSee tournament Nothing     = tournamentPublic tournament
 canSee tournament (Just user) =
