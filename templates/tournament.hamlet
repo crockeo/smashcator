@@ -1,20 +1,17 @@
-$maybe tournament <- mtournament
-  $if not $ tournamentPublic tournament
-    $maybe Entity userId user <- muser
-      $if userId == tournamentHost tournament
-        ^{tournamentdisplay}
-      $else
-        <h2 .text-center>This is a private tournament.
-        <h3 .text-center>
-          If you know who is running this tournament, feel free to contact them
-          to get an invite.
-    $nothing
-      <h2 .text-center>This is a private tournament.
-      <h3 .text-center>
-        If you should be able to see this page, try
-        <a href="@{LoginR}">logging
-        in first.
-  $else
-    ^{tournamentdisplay}
-$nothing
-  <h2 .text-center>No such tournament with id: #{id}
+<div .col-md-8 .col-md-offset-2>
+  <h2 .text-center>Tournament
+
+  <hr>
+
+  $maybe tournament <- mtournament
+
+    $if canSee tournament $ fmap entityKey muser
+      <h2 .text-center>Placeholder
+    $else
+      <h3 .text-center>This tournament is private.
+
+  $nothing
+    <h3 .text-center>
+      This tournament does not exist.
+      <br>
+      <a href="@{NewTournamentR}">But hey, why don't you make one?

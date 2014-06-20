@@ -3,6 +3,7 @@ module Routes.Tournament where
 import qualified Data.Text as T hiding (Text)
 
 import Import
+import Utils
 
 data NewTournament = NewTournament Bool Text (Maybe Text) (Maybe Text) (Maybe Text) [Text] Textarea Textarea
   deriving (Show)
@@ -33,8 +34,7 @@ getTournamentR id = do
       Nothing       -> return Nothing
       Just loggedin -> runSqlite dbLocation $ getBy $ UniqueName loggedin
 
-  let tournamentdisplay = ($(widgetFile "tournamentdisplay")) in
-    defaultLayout ($(widgetFile "tournament"))
+  defaultLayout ($(widgetFile "tournament"))
 
 getNewTournamentR :: Handler Html
 getNewTournamentR = do
