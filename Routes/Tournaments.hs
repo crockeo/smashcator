@@ -13,9 +13,10 @@ makeId key =
 
 getTournamentsR :: Handler Html
 getTournamentsR = do
-  rtournaments <- runSqlite dbLocation $ selectList [] []
-  mloggedin    <- lookupSession "loggedin"
-  muser        <-
+  (UTCTime nday _) <- liftIO $ getCurrentTime
+  rtournaments       <- runSqlite dbLocation $ selectList [] []
+  mloggedin          <- lookupSession "loggedin"
+  muser              <-
     case mloggedin of
       Nothing       -> return Nothing
       Just loggedin -> runSqlite dbLocation $ getBy $ UniqueName loggedin
