@@ -3,6 +3,7 @@ module Routes.Tournaments where
 import Data.Int
 
 import Import
+import Utils
 
 makeId :: Key Tournament -> Int
 makeId key =
@@ -12,6 +13,12 @@ makeId key =
 
 getTournamentsR :: Handler Html
 getTournamentsR = do
-  tournaments <- runSqlite dbLocation $ selectList [] []
+  rtournaments <- runSqlite dbLocation $ selectList [] []
+  mloggedin    <- lookupSession "loggedin"
+  muser        <-
+    case mloggedin of
+      Nothing       -> return Nothing
+      Just loggedin -> runSqlite dbLocation $ getBy $ UniqueName loggedin
 
-  defaultLayout ($(widgetFile "tournaments"))
+  let tournaments = filter (canSee' (fmap entityKey muser) . entityVal) rtournaments in
+   defaultLayout ($(widgetFile "tournaments"))

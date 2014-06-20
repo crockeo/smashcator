@@ -12,4 +12,4 @@ canSee tournament (Just user) =
   elem user (tournamentInvited    tournament)
 
 canSee' :: Maybe UserId -> Tournament -> Bool
-canSee user tournament = canSee tournament user
+canSee' user tournament = canSee tournament user
