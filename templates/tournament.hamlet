@@ -1,8 +1,20 @@
 $maybe tournament <- mtournament
-  <h3 .text-center>#{tournamentTitle tournament}
-  
-  <hr>
-
-  <p>#{tournamentDescription tournament}
+  $if not $ tournamentPublic tournament
+    $maybe Entity userId user <- muser
+      $if userId == tournamentHost tournament
+        ^{tournamentdisplay}
+      $else
+        <h2 .text-center>This is a private tournament.
+        <h3 .text-center>
+          If you know who is running this tournament, feel free to contact them
+          to get an invite.
+    $nothing
+      <h2 .text-center>This is a private tournament.
+      <h3 .text-center>
+        If you should be able to see this page, try
+        <a href="@{LoginR}">logging
+        in first.
+  $else
+    ^{tournamentdisplay}
 $nothing
-  <h3 .text-center>No such tournament with id: #{id}
+  <h2 .text-center>No such tournament with id: #{id}

@@ -27,12 +27,19 @@ newTournamentForm = renderBootstrap3 BootstrapBasicForm $ NewTournament
 getTournamentR :: Int -> Handler Html
 getTournamentR id = do
   mtournament <- runSqlite dbLocation $ get $ Key $ PersistInt64 $ fromIntegral id
-  defaultLayout ($(widgetFile "tournament"))
+  mloggedin   <- lookupSession "loggedin"
+  muser       <-
+    case mloggedin of
+      Nothing       -> return Nothing
+      Just loggedin -> runSqlite dbLocation $ getBy $ UniqueName loggedin
+
+  let tournamentdisplay = ($(widgetFile "tournamentdisplay")) in
+    defaultLayout ($(widgetFile "tournament"))
 
 getNewTournamentR :: Handler Html
 getNewTournamentR = do
   (form, enctype) <- generateFormPost newTournamentForm
-  loggedin        <- lookupSession "loggedin"
+  mloggedin        <- lookupSession "loggedin"
   defaultLayout ($(widgetFile "newtournament"))
 
 postNewTournamentR :: Handler ()
