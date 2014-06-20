@@ -27,9 +27,10 @@
               <small>No location set.
 
           <h4>
-            $maybe date <- tournamentDate tournament
+            $maybe (UTCTime day _) <- tournamentDate tournament
               <small>When:
-              #{show date}
+              #{show day}
+              <small> - #{show $ diffDays day nday} days
             $nothing
               <small>No time set.
 
