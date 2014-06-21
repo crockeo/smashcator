@@ -53,8 +53,8 @@
         <strong>This user hasn't hosted any tournaments.
       $else
         <strong>Tournaments hosted:
-        $forall Entity tournamentId tournament <- hosted
-          #{tournamentTitle tournament}
+        $forall Entity tournamentId tournament <- take 5 hosted
+          <a href="@{TournamentR $ makeTournamentId tournamentId}">#{tournamentTitle tournament}
         .
         <a href="@{TournamentsR}">See all.
 
@@ -63,8 +63,8 @@
         <strong>This user hasn't moderated any tournaments.
       $else
         <strong>Tournaments moderated:
-          $forall Entity tournamentId tournament <- moderated
-            #{tournamentTitle tournament}
+          $forall Entity tournamentId tournament <- take 5 moderated
+            <a href="@{TournamentR $ makeTournamentId tournamentId}">#{tournamentTitle tournament}
           .
           <a href="@{TournamentsR}">See all.
 
@@ -73,8 +73,8 @@
         <strong>This user hasn't attended any tournaments.
       $else
         <strong>Tournaments attended:
-          $forall Entity tournamentId tournament <- attended
-            #{tournamentTitle tournament}
+          $forall Entity tournamentId tournament <- take 5 attended
+            <a href="@{TournamentR $ makeTournamentId tournamentId}">#{tournamentTitle tournament}
           .
           <a href="@{TournamentsR}">See all.
 

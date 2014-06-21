@@ -1,6 +1,7 @@
 module Routes.User where
 
 import Import
+import Utils
 
 getUserR :: Text -> Handler Html
 getUserR username = do
