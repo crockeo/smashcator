@@ -3,9 +3,14 @@
 
   <hr>
 
-  <form #newTournamentForm method="post" action="@{NewTournamentR}" enctype="#{enctype}" role="form">
-    ^{form}
-    
-    <div .form-group>
-      <button .btn .btn-default type="submit">Submit
+  $maybe loggedin <- mloggedin
+    <form #newTournamentForm method="post" action="@{NewTournamentR}" enctype="#{enctype}" role="form">
+      ^{form}
 
+      <div .form-group>
+        <button .btn .btn-default type="submit">Submit
+  $nothing
+    <h3 .text-center>
+      You must be
+      <a href="@{LoginR}">logged in
+      to create a tournament.
