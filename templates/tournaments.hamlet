@@ -13,7 +13,7 @@
     $forall Entity tournamentId tournament <- tournaments
       <div .row .tournamentrow>
         <h3>
-          <a href="@{TournamentR $ makeId tournamentId}">#{tournamentTitle tournament}
+          <a href="@{TournamentR $ makeTournamentId tournamentId}">#{tournamentTitle tournament}
 
         <div .col-md-offset-1>
           $if not $ tournamentPublic tournament

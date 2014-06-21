@@ -1,5 +1,6 @@
 module Utils
   ( makeUTCTime
+  , makeTournamentId
   , canSee
   , canSee'
   , getTournamentHost
@@ -8,10 +9,18 @@ module Utils
   , getTournamentInvited
   ) where
 
+import Data.Int
+
 import Import
 
 makeUTCTime :: Day -> UTCTime
 makeUTCTime day = UTCTime day $ secondsToDiffTime 0
+
+makeTournamentId :: Key Tournament -> Int
+makeTournamentId key =
+  case fromPersistValue $ unKey key :: Either Text Int64 of
+    Left  _ -> 0
+    Right v -> fromIntegral v
 
 canSee :: Tournament -> Maybe UserId -> Bool
 canSee tournament Nothing     = tournamentPublic tournament

@@ -1,16 +1,9 @@
 module Routes.Tournaments where
 
 import qualified Data.Text as T
-import Data.Int
 
 import Import
 import Utils
-
-makeId :: Key Tournament -> Int
-makeId key =
-  case fromPersistValue $ unKey key :: Either Text Int64 of
-    Left  _ -> 0
-    Right v -> fromIntegral v
 
 getTournamentsR :: Handler Html
 getTournamentsR = do
