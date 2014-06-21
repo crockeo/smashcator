@@ -44,4 +44,6 @@
 
           <h4>
             <small>Description:
-            #{tournamentDescription tournament}
+            #{T.take 64 $ tournamentDescription tournament}
+            $if (T.length $ tournamentDescription tournament) > 64
+              ...

@@ -1,5 +1,6 @@
 module Routes.Tournaments where
 
+import qualified Data.Text as T
 import Data.Int
 
 import Import
