@@ -1,4 +1,12 @@
-module Utils where
+module Utils
+  ( makeUTCTime
+  , canSee
+  , canSee'
+  , getTournamentHost
+  , getTournamentModerators
+  , getTournamentAttending
+  , getTournamentInvited
+  ) where
 
 import Import
 
@@ -16,3 +24,14 @@ canSee tournament (Just user) =
 
 canSee' :: Maybe UserId -> Tournament -> Bool
 canSee' user tournament = canSee tournament user
+
+getTournamentHost :: Tournament -> IO (Maybe User)
+getTournamentHost tournament = runSqlite dbLocation $ get $ tournamentHost tournament
+
+applyGetTournament :: (Tournament -> [UserId]) -> Tournament -> IO [Maybe User]
+applyGetTournament fn tournament =
+  sequence $ map (runSqlite dbLocation . get) $ fn tournament
+
+getTournamentModerators = applyGetTournament tournamentModerators
+getTournamentAttending  = applyGetTournament tournamentAttending
+getTournamentInvited    = applyGetTournament tournamentInvited

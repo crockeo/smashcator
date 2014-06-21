@@ -1,0 +1,3 @@
+.tournamentBackground
+  width:100%;
+  box-shadow:-2px 0px 0px #162136, 2px 0px 0px #162136, -2px 0px 2px #162136, 2px 0px 2px #162136;

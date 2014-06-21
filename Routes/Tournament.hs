@@ -25,6 +25,12 @@ newTournamentForm = renderBootstrap3 BootstrapBasicForm $ NewTournament
                     , ("Project M"              , "PM"   )
                     ]
 
+applyTournamentFn :: Maybe Tournament -> (Tournament -> IO [Maybe a]) -> Handler [Maybe a]
+applyTournamentFn mtournament fn =
+  case mtournament of
+    Nothing         -> return []
+    Just tournament -> liftIO $ fn tournament
+
 getTournamentR :: Int -> Handler Html
 getTournamentR id = do
   mtournament <- runSqlite dbLocation $ get $ Key $ PersistInt64 $ fromIntegral id
@@ -33,6 +39,15 @@ getTournamentR id = do
     case mloggedin of
       Nothing       -> return Nothing
       Just loggedin -> runSqlite dbLocation $ getBy $ UniqueName loggedin
+
+  mhost       <-
+    case mtournament of
+      Nothing         -> return Nothing
+      Just tournament -> liftIO $ getTournamentHost tournament
+
+  moderators  <- applyTournamentFn mtournament getTournamentModerators
+  attending   <- applyTournamentFn mtournament getTournamentAttending
+  invited     <- applyTournamentFn mtournament getTournamentInvited
 
   defaultLayout ($(widgetFile "tournament"))
 

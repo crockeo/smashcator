@@ -1,17 +1,85 @@
 <div .col-md-8 .col-md-offset-2>
-  <h2 .text-center>Tournament
-
-  <hr>
-
   $maybe tournament <- mtournament
-
     $if canSee tournament $ fmap entityKey muser
-      <h2 .text-center>Placeholder
+      $maybe backgroundImage <- tournamentBackgroundImage tournament
+        <img .tournamentBackground src="#{backgroundImage}" alt="Tournament background image.">
+
+      <div .col-md-10 .col-md-offset-1>
+        <h2 .text-center>#{tournamentTitle tournament}
+
+        <div .row>
+          <div .col-md-6>
+            <h4 .text-center>
+              $maybe location <- tournamentLocation tournament
+                <small>At:
+                #{location}
+              $nothing
+                <small>No location set
+
+          <div .col-md-6>
+            <h4 .text-center>
+              $maybe UTCTime day _ <- tournamentDate tournament
+                <small>When:
+                #{show day}
+              $nothing
+                <small>No time set.
+
+        <hr>
+
+        <div .row>
+          <h4 .text-center>
+            $maybe host <- mhost
+              <small>Host:
+              <a href="@{UserR $ userUsername host}">#{userUsername host}
+            $nothing
+              <small>Host does not exist!
+
+        <div .row>
+          <h4 .text-center>
+            $if null moderators
+              <small>No Moderators
+            $else
+              <small>Moderators:
+              $forall mmoderator <- moderators
+                $maybe moderator <- mmoderator
+                  <a href="@{UserR $ userUsername moderator}">#{userUsername moderator} #
+
+        <div .row>
+          <h4 .text-center>
+            $if null attending
+              <small>No Attendees
+            $else
+              <small>Attendees:
+              $forall mattendee <- attending
+                $maybe attendee <- mattendee
+                  <a href="@{UserR $ userUsername attendee}">#{userUsername attendee} #
+
+        <div .row>
+          <h4 .text-center>
+            $if null invited
+              <small>No One Has Been Invited
+            $else
+              <small>Invited:
+              $forall minvitee <- invited
+                $maybe invitee <- minvitee
+                  <a href="@{UserR $ userUsername invitee}">#{userUsername invitee} #
+
+        <hr>
+
+        <div .row>
+          <h4 .text-center>Description
+          <p .text-justify .col-md-10 .col-md-offset-1>#{tournamentDescription tournament}
+
+        <hr>
+
+        <div .row>
+          <h4 .text-center>Ruleset
+          <p .text-justify .col-md-10 .col-md-offset-1>#{tournamentRuleset tournament}
     $else
-      <h3 .text-center>This tournament is private.
+      <h2 .text-center>This tournament is private.
 
   $nothing
-    <h3 .text-center>
+    <h2 .text-center>
       This tournament does not exist.
       <br>
-      <a href="@{NewTournamentR}">But hey, why don't you make one?
+      <a href="@{NewTournamentR}">Why not make one?
