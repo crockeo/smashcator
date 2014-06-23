@@ -1,11 +1,9 @@
-module Import ( module Import
-              , (<>)
-              ) where
+module Import ( module Import ) where
 
 import Data.Time.Calendar        as Import
 import Data.Time.Clock           as Import
 import Data.Hashable             as Import
-import Data.Monoid               as Import (Monoid (mappend, mempty, mconcat))
+import Data.Monoid               as Import (Monoid (mappend, mempty, mconcat), (<>))
 import Data.Text                 as Import (Text)
 
 import Network.Mail.Client.Gmail as Import
@@ -27,7 +25,3 @@ import WidgetFile                as Import
 import SmashDB                   as Import
 
 type Form a = Html -> MForm Handler (FormResult a, Widget)
-
-infixr 5 <>
-(<>) :: Monoid m => m -> m -> m
-(<>) = mappend
